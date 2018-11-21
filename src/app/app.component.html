@@ -1,0 +1,27 @@
+<mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')">
+    <mat-sidenav #sidenav mode="side" (keydown.escape)="close('escape')" disableClose>
+        <button mat-button (click)="close('escape')">Close</button>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <h3>Login</h3>
+
+        <form>
+          <mat-form-field>
+            <input matInput name="loginEmailControl" required placeholder="E-mail" value="">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput name="loginPasswordControl" placeholder="Senha" value="">
+          </mat-form-field>
+
+          <button mat-button color="primary">Entrar</button>
+        </form>
+
+        <div class="button-row">
+          <p>
+            <button mat-button (click)="sidenav.open()">Open</button>
+          </p>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
