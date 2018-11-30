@@ -1,7 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
-import {MatSidenav} from '@angular/material/sidenav';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +6,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @ViewChild('sidenav') sidenav: MatSidenav;
-
-  title = 'angular-test';
-
   reason = '';
 
-  close(reason: string) {
+  start(reason: string) {
     this.reason = reason;
-    this.sidenav.close();
   }
 }

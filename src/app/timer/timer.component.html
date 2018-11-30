@@ -1,0 +1,29 @@
+<mat-button-toggle-group #group="matButtonToggleGroup">
+  <mat-button-toggle value="default">Default</mat-button-toggle>
+  <mat-button-toggle value="shortBreak">Short Break</mat-button-toggle>
+  <mat-button-toggle value="longBreak">Long Break</mat-button-toggle>
+</mat-button-toggle-group>
+
+<div class="example-selected-value">Selected value: {{group.value}}</div>
+
+<div class="button-row">
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="sidenav.start()">
+    <mat-icon>play_circle_filled</mat-icon>Start
+  </button>
+
+  <button
+    mat-flat-button
+    color="warn"
+    (click)="sidenav.pause()">
+    <mat-icon>pause_circle_filled</mat-icon>Start
+    Pause
+  </button>
+
+  <button mat-button
+    (click)="sidenav.reset()">
+    <mat-icon>replay</mat-icon>Reset
+  </button>
+</div>
