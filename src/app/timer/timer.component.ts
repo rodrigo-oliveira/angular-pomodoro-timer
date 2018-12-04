@@ -7,9 +7,14 @@ import {Component} from '@angular/core';
 })
 export class TimerComponent {
 
-  reason = '';
+  counter = 5 * 60;
 
-  start(reason: string) {
-    this.reason = reason;
+  start() {
+    const timer = () => {
+      this.counter = this.counter - 1;
+      console.log(this.counter);
+    };
+    const intervalTimer = setInterval(timer, 1000);
+
   }
 }

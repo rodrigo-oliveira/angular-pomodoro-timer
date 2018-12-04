@@ -6,24 +6,26 @@
 
 <div class="example-selected-value">Selected value: {{group.value}}</div>
 
+<h1 class="mat-display-1">{{counter}} seconds</h1>
+
 <div class="button-row">
   <button
     mat-flat-button
     color="primary"
-    (click)="sidenav.start()">
+    (click)="start()">
     <mat-icon>play_circle_filled</mat-icon>Start
   </button>
 
   <button
     mat-flat-button
     color="warn"
-    (click)="sidenav.pause()">
+    (click)="pause()">
     <mat-icon>pause_circle_filled</mat-icon>Start
     Pause
   </button>
 
   <button mat-button
-    (click)="sidenav.reset()">
+    (click)="reset()">
     <mat-icon>replay</mat-icon>Reset
   </button>
 </div>
