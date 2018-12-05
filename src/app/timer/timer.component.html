@@ -6,12 +6,13 @@
 
 <div class="example-selected-value">Selected value: {{group.value}}</div>
 
-<h1 class="mat-display-1">{{counter}} seconds</h1>
+<h1 class="mat-display-1">{{countdown}}</h1>
 
 <div class="button-row">
   <button
     mat-flat-button
     color="primary"
+    [disabled]="started"
     (click)="start()">
     <mat-icon>play_circle_filled</mat-icon>Start
   </button>
@@ -20,8 +21,7 @@
     mat-flat-button
     color="warn"
     (click)="pause()">
-    <mat-icon>pause_circle_filled</mat-icon>Start
-    Pause
+    <mat-icon>pause_circle_filled</mat-icon>Pause
   </button>
 
   <button mat-button
