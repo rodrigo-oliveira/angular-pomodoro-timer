@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 
 function formatToMinutes(seconds: number) {
   return (seconds - (seconds %= 60)) / 60 +
-    (9 < seconds ? ':' : ':0') + seconds;
+(9 < seconds ? ':' : ':0') + seconds;
 }
 
 @Component({
@@ -12,8 +12,9 @@ function formatToMinutes(seconds: number) {
 })
 export class TimerComponent {
   paused: Boolean = false;
-  counter: number = 5 * 60;
+  counter: number = 25 * 60;
   started: Boolean = false;
+  selectedInterval: String = 'default';
   intervalTimer;
   countdown: String;
 
@@ -44,7 +45,24 @@ export class TimerComponent {
   reset() {
     clearInterval(this.intervalTimer);
     this.started = false;
-    this.counter = 5 * 60;
+    this.counter = this.getCounter(this.selectedInterval);
     this.countdown = formatToMinutes(this.counter);
+  }
+
+  getCounter(intervalName) {
+    const intervals = {
+      'default' : 25,
+      'shortBreak' : 5,
+      'longBreak': 10
+    };
+
+    return intervals[intervalName] * 60;
+  }
+
+  onChangeInterval(intervalName) {
+    this.started = false;
+    this.counter = this.getCounter(intervalName);
+    this.countdown = formatToMinutes(this.counter);
+    clearInterval(this.intervalTimer);
   }
 }

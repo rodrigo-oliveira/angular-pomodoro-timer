@@ -1,0 +1,13 @@
+.timer {
+  margin: 0 auto;
+  width: 380px;
+  text-align: center;
+}
+
+.timer .timer-intervals button {
+    margin: 0 20px 0 0;
+}
+
+.timer .timer-countdown {
+    margin: 20px 0 20px 0;
+}

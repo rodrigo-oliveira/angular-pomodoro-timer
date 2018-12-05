@@ -1,31 +1,37 @@
-<mat-button-toggle-group #group="matButtonToggleGroup">
-  <mat-button-toggle value="default">Default</mat-button-toggle>
-  <mat-button-toggle value="shortBreak">Short Break</mat-button-toggle>
-  <mat-button-toggle value="longBreak">Long Break</mat-button-toggle>
-</mat-button-toggle-group>
+<div class="timer">
+  <mat-button-toggle-group
+    appearance="legacy"
+    name="interval"
+    [value]="selectedInterval"
+    aria-label="interval"
+    (change)="onChangeInterval(intervals.value)"
+    #intervals="matButtonToggleGroup">
+    <mat-button-toggle value="default">Default</mat-button-toggle>
+    <mat-button-toggle value="shortBreak">Short Break</mat-button-toggle>
+    <mat-button-toggle value="longBreak">Long Break</mat-button-toggle>
+  </mat-button-toggle-group>
 
-<div class="example-selected-value">Selected value: {{group.value}}</div>
+  <h1 class="mat-display-1 timer-countdown">{{countdown}}</h1>
 
-<h1 class="mat-display-1">{{countdown}}</h1>
+  <div class="button-row timer-intervals">
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="started"
+      (click)="start()">
+      <mat-icon>play_circle_filled</mat-icon>Start
+    </button>
 
-<div class="button-row">
-  <button
-    mat-flat-button
-    color="primary"
-    [disabled]="started"
-    (click)="start()">
-    <mat-icon>play_circle_filled</mat-icon>Start
-  </button>
+    <button
+      mat-flat-button
+      color="warn"
+      (click)="pause()">
+      <mat-icon>pause_circle_filled</mat-icon>Pause
+    </button>
 
-  <button
-    mat-flat-button
-    color="warn"
-    (click)="pause()">
-    <mat-icon>pause_circle_filled</mat-icon>Pause
-  </button>
-
-  <button mat-button
-    (click)="reset()">
-    <mat-icon>replay</mat-icon>Reset
-  </button>
+    <button mat-button
+      (click)="reset()">
+      <mat-icon>replay</mat-icon>Reset
+    </button>
+  </div>
 </div>

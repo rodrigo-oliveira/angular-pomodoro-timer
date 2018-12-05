@@ -5,7 +5,7 @@ import {
   MatButtonToggleModule
 } from '@angular/material';
 import { TimerComponent } from './timer.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
