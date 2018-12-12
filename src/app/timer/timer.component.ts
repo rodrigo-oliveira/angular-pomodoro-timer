@@ -8,15 +8,20 @@ function formatToMinutes(seconds: number) {
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
-  styleUrls: ['./timer.component.css']
+  styleUrls: ['./timer.component.scss']
 })
 export class TimerComponent {
   paused: Boolean = false;
   counter: number = 25 * 60;
   started: Boolean = false;
-  selectedInterval: String = 'default';
+  selectedInterval: String = 'pomodoro';
   intervalTimer;
   countdown: String;
+  intervals = {
+    'pomodoro' : 25,
+    'shortBreak' : 5,
+    'longBreak': 10
+  };
 
   constructor() {
     this.countdown = formatToMinutes(this.counter);
@@ -29,9 +34,22 @@ export class TimerComponent {
     } else {
       clearInterval(this.intervalTimer);
     }
+
+    if (this.counter === 0) {
+      const n = new Notification('Acabou o tempo', {
+        body: 'Lorem ipsum'
+      });
+    }
   }
 
   start() {
+    Notification.requestPermission().then(status => {
+      if (status === 'granted') {
+        console.log('Permissão concedida');
+      } else {
+        console.log(status);
+      }
+    });
     this.paused = false;
     this.started = true;
     this.intervalTimer = setInterval(this.timer, 1000);
@@ -50,13 +68,7 @@ export class TimerComponent {
   }
 
   getCounter(intervalName) {
-    const intervals = {
-      'default' : 25,
-      'shortBreak' : 5,
-      'longBreak': 10
-    };
-
-    return intervals[intervalName] * 60;
+    return this.intervals[intervalName] * 60;
   }
 
   onChangeInterval(intervalName) {

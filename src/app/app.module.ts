@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {TimerModule} from './timer/timer.module';
+import {HeaderModule} from './header/header.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import {TimerModule} from './timer/timer.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    TimerModule
+    TimerModule,
+    HeaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
